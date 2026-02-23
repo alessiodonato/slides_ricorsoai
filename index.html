@@ -116,6 +116,10 @@
     transform: none;
   }
 
+  .btn-fullscreen {
+    font-size: 16px;
+  }
+
   #counter {
     font-size: 15px;
     font-weight: 700;
@@ -182,6 +186,48 @@
     flex-direction: column;
     align-items: center;
   }
+
+  /* ── Fullscreen mode ─────────────────────────────────── */
+  :fullscreen #scaler,
+  :-webkit-full-screen #scaler {
+    transform: none !important;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+  }
+
+  :fullscreen #stage,
+  :-webkit-full-screen #stage {
+    width: 100vw;
+    height: calc(100vh - 100px);
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  :fullscreen #controls,
+  :-webkit-full-screen #controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    z-index: 100;
+  }
+
+  :fullscreen #dots,
+  :-webkit-full-screen #dots {
+    display: none;
+  }
+
+  :fullscreen #hint,
+  :-webkit-full-screen #hint {
+    display: none;
+  }
+
+  :fullscreen #progress-wrap,
+  :-webkit-full-screen #progress-wrap {
+    border-radius: 0;
+  }
 </style>
 </head>
 <body>
@@ -196,10 +242,11 @@
     <button class="btn" id="prevBtn" title="Slide precedente (←)">&#8592;</button>
     <div id="counter"><span id="cur">1</span> / <span id="tot">10</span></div>
     <button class="btn" id="nextBtn" title="Slide successiva (→)">&#8594;</button>
+    <button class="btn btn-fullscreen" id="fullscreenBtn" title="Schermo intero (F)">&#x26F6;</button>
   </div>
 
   <div id="dots"></div>
-  <p id="hint">usa ← → o click per navigare</p>
+  <p id="hint">usa ← → per navigare, F per schermo intero</p>
 </div>
 
 <script>
@@ -305,6 +352,7 @@
 
   // ── Responsive scaling ───────────────────────────────
   function scaleToFit() {
+    if (document.fullscreenElement || document.webkitFullscreenElement) return;
     const scaler = document.getElementById('scaler');
     const sw = window.innerWidth  * 0.97;
     const sh = window.innerHeight * 0.82;
@@ -313,6 +361,41 @@
   }
   scaleToFit();
   window.addEventListener('resize', scaleToFit);
+
+  // ── Fullscreen ──────────────────────────────────────
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      const elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  }
+
+  function updateFullscreenIcon() {
+    const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
+    fullscreenBtn.innerHTML = isFullscreen ? '&#x2716;' : '&#x26F6;';
+    fullscreenBtn.title = isFullscreen ? 'Esci da schermo intero (F o Esc)' : 'Schermo intero (F)';
+  }
+
+  fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+  });
+
+  document.addEventListener('fullscreenchange', updateFullscreenIcon);
+  document.addEventListener('webkitfullscreenchange', updateFullscreenIcon);
 </script>
 </body>
 </html>
