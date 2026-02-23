@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Chi Si Rivolge - RicorsoAI</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: #f3f4f6; }
+        .slide-container { width: 1280px; height: 720px; position: relative; overflow: hidden; background-color: #ffffff; display: flex; flex-direction: column; }
+        .font-heading { font-family: 'Montserrat', sans-serif; }
+        .text-primary { color: #1A5276; }
+        .bg-primary { background-color: #1A5276; }
+        .text-accent { color: #E67E22; }
+        .bg-accent { background-color: #E67E22; }
+        .border-primary { border-color: #1A5276; }
+        .border-accent { border-color: #E67E22; }
+        
+        /* Card Styling */
+        .target-card {
+            transition: all 0.3s ease;
+            border-bottom: 4px solid transparent;
+        }
+        .target-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card-blue:hover { border-bottom-color: #1A5276; }
+        .card-orange:hover { border-bottom-color: #E67E22; }
+
+        .icon-wrapper {
+            transition: transform 0.3s ease;
+        }
+        .target-card:hover .icon-wrapper {
+            transform: scale(1.1);
+        }
+
+        /* List Styling */
+        .custom-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .custom-list li::before {
+            content: "\f00c"; /* check icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-size: 0.8rem;
+            top: 0.2rem;
+        }
+        .custom-list.blue-checks li::before {
+            color: #1A5276;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Header Section -->
+<div class="px-16 pt-12 pb-6 flex justify-between items-end">
+<div>
+<div class="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100">
+<i class="fa-solid fa-users text-primary text-xs"></i>
+<p class="font-heading font-bold text-primary text-xs uppercase tracking-widest">Target Audience</p>
+</div>
+<h1 class="font-heading font-extrabold text-5xl text-primary mb-2">A Chi Si Rivolge</h1>
+<p class="text-2xl text-gray-400 font-light">Per ogni cittadino italiano</p>
+</div>
+<!-- Decorative Dots -->
+<div class="flex gap-1 mb-4">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-accent"></div>
+<div class="w-2 h-2 rounded-full bg-gray-300"></div>
+</div>
+</div>
+<!-- Main Content: 2x2 Grid -->
+<div class="flex-1 px-16 pb-12 flex items-center">
+<div class="grid grid-cols-2 gap-8 w-full h-full">
+<!-- Card 1: Automobilisti (Blue) -->
+<div class="target-card card-blue bg-white rounded-2xl shadow-md p-8 flex items-start gap-6 border border-gray-100 h-full">
+<div class="icon-wrapper w-20 h-20 rounded-2xl bg-blue-50 flex items-center justify-center flex-shrink-0 text-primary">
+<i class="fa-solid fa-car-side text-4xl"></i>
+</div>
+<div>
+<h3 class="font-heading font-bold text-2xl text-primary mb-3">Automobilisti</h3>
+<ul class="custom-list text-gray-600 text-lg leading-relaxed">
+<li>Multe da autovelox</li>
+<li>Eccesso di velocità</li>
+<li>Accesso non autorizzato ZTL</li>
+</ul>
+</div>
+</div>
+<!-- Card 2: Residenti Urbani (Orange) -->
+<div class="target-card card-orange bg-white rounded-2xl shadow-md p-8 flex items-start gap-6 border border-gray-100 h-full">
+<div class="icon-wrapper w-20 h-20 rounded-2xl bg-orange-50 flex items-center justify-center flex-shrink-0 text-accent">
+<i class="fa-solid fa-square-parking text-4xl"></i>
+</div>
+<div>
+<h3 class="font-heading font-bold text-2xl text-primary mb-3">Residenti Urbani</h3>
+<ul class="custom-list blue-checks text-gray-600 text-lg leading-relaxed">
+<li>Divieto di sosta</li>
+<li>Sosta su strisce blu scadute</li>
+<li>Parcheggi irregolari</li>
+</ul>
+</div>
+</div>
+<!-- Card 3: Professionisti (Orange) -->
+<div class="target-card card-orange bg-white rounded-2xl shadow-md p-8 flex items-start gap-6 border border-gray-100 h-full">
+<div class="icon-wrapper w-20 h-20 rounded-2xl bg-orange-50 flex items-center justify-center flex-shrink-0 text-accent">
+<i class="fa-solid fa-truck-fast text-4xl"></i>
+</div>
+<div>
+<h3 class="font-heading font-bold text-2xl text-primary mb-3">Professionisti</h3>
+<ul class="custom-list blue-checks text-gray-600 text-lg leading-relaxed">
+<li>Corrieri e trasportatori</li>
+<li>Rappresentanti commerciali</li>
+<li>Chiunque guidi per lavoro</li>
+</ul>
+</div>
+</div>
+<!-- Card 4: Tutti coloro che (Blue - Highlighted) -->
+<div class="target-card card-blue bg-primary bg-opacity-5 rounded-2xl shadow-md p-8 flex items-start gap-6 border border-blue-100 h-full">
+<div class="icon-wrapper w-20 h-20 rounded-2xl bg-white flex items-center justify-center flex-shrink-0 text-primary shadow-sm">
+<i class="fa-solid fa-scale-balanced text-4xl"></i>
+</div>
+<div>
+<h3 class="font-heading font-bold text-2xl text-primary mb-3">Tutti coloro che...</h3>
+<ul class="custom-list text-gray-700 text-lg leading-relaxed font-medium">
+<li>Non vogliono pagare multe ingiuste</li>
+<li>Non possono permettersi un avvocato</li>
+<li>Vogliono far valere i propri diritti</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Decoration -->
+<div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200"></div>
+</div>
+</body>
+</html>

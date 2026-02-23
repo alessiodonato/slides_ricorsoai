@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>I Numeri che Contano - RicorsoAI</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Lato:wght@300;400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: #f3f4f6; }
+        .slide-container { width: 1280px; height: 720px; position: relative; overflow: hidden; background-color: #ffffff; display: flex; flex-direction: column; }
+        .font-heading { font-family: 'Montserrat', sans-serif; }
+        .text-primary { color: #1A5276; }
+        .bg-primary { background-color: #1A5276; }
+        .text-accent { color: #E67E22; }
+        .bg-accent { background-color: #E67E22; }
+        .border-primary { border-color: #1A5276; }
+        .border-accent { border-color: #E67E22; }
+        
+        /* Metric Card Styling */
+        .metric-card {
+            transition: transform 0.3s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .metric-number {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1;
+        }
+        
+        .quote-box {
+            position: relative;
+            background-color: #FDF2E9; /* Very light orange */
+            border-left: 6px solid #E67E22;
+        }
+        
+        .quote-icon {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 60px;
+            color: #E67E22;
+            opacity: 0.2;
+        }
+
+        /* Dashed divider between metrics */
+        .divider-vertical {
+            width: 1px;
+            height: 60%;
+            background-color: #e5e7eb;
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Header Section -->
+<div class="px-16 pt-12 pb-6 text-center">
+<div class="inline-flex items-center gap-2 mb-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100">
+<i class="fa-solid fa-chart-pie text-primary text-xs"></i>
+<p class="font-heading font-bold text-primary text-xs uppercase tracking-widest">Statistiche &amp; Tempistiche</p>
+</div>
+<h1 class="font-heading font-extrabold text-5xl text-primary mb-2">I Numeri che Contano</h1>
+<p class="text-xl text-gray-500 font-light">Perché contestare conviene sempre</p>
+</div>
+<!-- Main Content: Metrics Row -->
+<div class="flex-1 px-12 flex items-center justify-center w-full">
+<div class="flex justify-between w-full max-w-6xl gap-4">
+<!-- Metric 1: Success Rate -->
+<div class="metric-card flex-1 flex flex-col items-center text-center p-6 rounded-2xl hover:bg-gray-50">
+<div class="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mb-4 text-green-600">
+<i class="fa-solid fa-check-to-slot text-3xl"></i>
+</div>
+<p class="metric-number font-black text-5xl text-primary mb-2">60-70<span class="text-3xl">%</span></p>
+<p class="font-heading font-bold text-gray-800 text-lg mb-2">Ricorsi Accolti</p>
+<p class="text-sm text-gray-500 leading-snug px-2">Percentuale media di successo per i ricorsi ben motivati.</p>
+</div>
+<div class="divider-vertical"></div>
+<!-- Metric 2: Prefetto Time -->
+<div class="metric-card flex-1 flex flex-col items-center text-center p-6 rounded-2xl hover:bg-gray-50">
+<div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-4 text-primary">
+<i class="fa-solid fa-building-columns text-3xl"></i>
+</div>
+<p class="metric-number font-black text-5xl text-primary mb-2">90</p>
+<p class="font-heading font-bold text-gray-800 text-lg mb-2">Giorni (Prefetto)</p>
+<p class="text-sm text-gray-500 leading-snug px-2">Tempo massimo per presentare ricorso al Prefetto dalla notifica.</p>
+</div>
+<div class="divider-vertical"></div>
+<!-- Metric 3: GDP Time -->
+<div class="metric-card flex-1 flex flex-col items-center text-center p-6 rounded-2xl hover:bg-gray-50">
+<div class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-4 text-accent">
+<i class="fa-solid fa-gavel text-3xl"></i>
+</div>
+<p class="metric-number font-black text-5xl text-primary mb-2">30</p>
+<p class="font-heading font-bold text-gray-800 text-lg mb-2">Giorni (GdP)</p>
+<p class="text-sm text-gray-500 leading-snug px-2">Tempo massimo per presentare ricorso al Giudice di Pace.</p>
+</div>
+<div class="divider-vertical"></div>
+<!-- Metric 4: Free Cost -->
+<div class="metric-card flex-1 flex flex-col items-center text-center p-6 rounded-2xl bg-primary bg-opacity-5 border border-blue-100 transform scale-105 shadow-sm">
+<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-4 text-accent shadow-sm">
+<i class="fa-solid fa-gift text-3xl"></i>
+</div>
+<p class="metric-number font-black text-5xl text-accent mb-2">€0</p>
+<p class="font-heading font-bold text-gray-800 text-lg mb-2">Primo Ricorso</p>
+<p class="text-sm text-gray-600 leading-snug px-2 font-medium">Prova il servizio senza rischi. Il primo documento è gratuito.</p>
+</div>
+</div>
+</div>
+<!-- Footer Quote Section -->
+<div class="px-24 pb-12">
+<div class="quote-box p-8 rounded-r-xl rounded-bl-xl shadow-sm flex items-center justify-center">
+<i class="fa-solid fa-quote-left quote-icon"></i>
+<div class="text-center relative z-10">
+<p class="font-heading font-bold text-2xl text-primary italic leading-relaxed">
+                        "Non è questione di non pagare, è questione di pagare solo quando è giusto."
+                    </p>
+</div>
+</div>
+</div>
+<!-- Background Elements -->
+<div class="absolute bottom-0 right-0 w-32 h-32 bg-gray-100 rounded-tl-full -z-10"></div>
+<div class="absolute top-0 left-0 w-24 h-24 bg-blue-50 rounded-br-full -z-10 opacity-50"></div>
+</div>
+</body>
+</html>

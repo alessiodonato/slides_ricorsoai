@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RicorsoAI - Pitch Deck</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body { margin: 0; padding: 0; font-family: 'Lato', sans-serif; }
+        .font-heading { font-family: 'Montserrat', sans-serif; }
+        .text-primary { color: #1A5276; }
+        .bg-primary { background-color: #1A5276; }
+        .text-accent { color: #E67E22; }
+        .bg-accent { background-color: #E67E22; }
+        
+        /* Custom Clip Path for Dynamic Diagonal Split */
+        .hero-diagonal {
+            clip-path: polygon(25% 0%, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center w-full h-screen bg-gray-200">
+<!-- Slide Container -->
+<div class="w-[1280px] h-[720px] bg-white relative overflow-hidden flex shadow-2xl">
+<!-- Left Section: Content -->
+<div class="w-7/12 flex flex-col justify-between pl-24 pr-32 py-20 z-10 bg-white">
+<!-- Logo Area -->
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg">
+<i class="fa-solid fa-scale-balanced text-2xl"></i>
+</div>
+<div class="flex flex-col">
+<h1 class="font-heading font-black text-3xl text-primary tracking-tight">RicorsoAI</h1>
+<span class="text-xs font-bold text-accent uppercase tracking-widest">Legal Tech</span>
+</div>
+</div>
+<!-- Main Title & Subtitle -->
+<div class="flex flex-col gap-6 mt-4">
+<div class="w-20 h-2 bg-accent rounded-full"></div>
+<h2 class="font-heading font-extrabold text-6xl text-primary leading-tight">
+                    L'intelligenza artificiale <br/>
+<span class="text-accent">che ti aiuta</span> a <br/>
+                    contestare le multe
+                </h2>
+<p class="text-xl text-gray-500 font-light max-w-lg mt-2">
+                    Semplice, veloce e accessibile a tutti.
+                </p>
+</div>
+<!-- Footer / URL -->
+<div class="flex items-center gap-3 mt-8">
+<div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-primary">
+<i class="fa-solid fa-globe"></i>
+</div>
+<p class="font-heading font-bold text-xl text-primary">www.ricorsoai.it</p>
+</div>
+</div>
+<!-- Right Section: Visual & Background -->
+<div class="absolute top-0 right-0 w-7/12 h-full bg-primary hero-diagonal flex items-center justify-center overflow-hidden">
+<!-- Decorative Background Patterns -->
+<div class="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full border-[60px] border-white opacity-5"></div>
+<div class="absolute bottom-[-10%] left-[10%] w-[400px] h-[400px] rounded-full bg-accent opacity-20 filter blur-3xl"></div>
+<!-- Tech/Abstract Network Pattern Overlay -->
+<svg class="absolute inset-0 w-full h-full opacity-10" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+<!-- Main Visual Illustration -->
+<div class="relative z-20 transform translate-x-10 translate-y-5">
+<!-- Using a composed icon graphic since external images can be unreliable or inconsistent in style. 
+                      A stylized justice scale with tech elements fits the "AI" theme perfectly. -->
+<div class="relative w-96 h-96">
+<!-- Central Scale Icon -->
+<div class="absolute inset-0 flex items-center justify-center text-white opacity-90 drop-shadow-2xl">
+<i class="fa-solid fa-scale-unbalanced-flip text-[250px]"></i>
+</div>
+<!-- Floating Tech Elements around the scale -->
+<div class="absolute top-0 right-10 bg-white p-4 rounded-lg shadow-xl animate-bounce" style="animation-duration: 3s;">
+<i class="fa-solid fa-file-contract text-accent text-3xl"></i>
+</div>
+<div class="absolute bottom-20 left-0 bg-accent p-4 rounded-lg shadow-xl" style="transform: rotate(-10deg);">
+<i class="fa-solid fa-robot text-white text-3xl"></i>
+</div>
+<div class="absolute top-1/2 right-[-20px] bg-white p-3 rounded-full shadow-lg">
+<i class="fa-solid fa-check text-green-500 text-2xl"></i>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Accent Line -->
+<div class="absolute bottom-0 left-0 w-full h-3 bg-gradient-to-r from-primary via-blue-800 to-accent"></div>
+</div>
+</body>
+</html>
+
+

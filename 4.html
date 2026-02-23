@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Come Funziona - RicorsoAI</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: #f3f4f6; }
+        .slide-container { width: 1280px; height: 720px; position: relative; overflow: hidden; background-color: #ffffff; display: flex; flex-direction: column; }
+        .font-heading { font-family: 'Montserrat', sans-serif; }
+        .text-primary { color: #1A5276; }
+        .bg-primary { background-color: #1A5276; }
+        .text-accent { color: #E67E22; }
+        .bg-accent { background-color: #E67E22; }
+        .border-primary { border-color: #1A5276; }
+        .border-accent { border-color: #E67E22; }
+        
+        /* Card Styling */
+        .process-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+        
+        .number-bg {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 180px;
+            font-weight: 900;
+            color: #f3f4f6;
+            z-index: 0;
+            font-family: 'Montserrat', sans-serif;
+            opacity: 0.8;
+            line-height: 1;
+        }
+
+        .icon-circle {
+            box-shadow: 0 0 0 8px rgba(230, 126, 34, 0.1);
+        }
+
+        /* Connecting dashed line */
+        .connector-line {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background-image: linear-gradient(to right, #1A5276 50%, transparent 50%);
+            background-size: 20px 100%;
+            z-index: 0;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Header Section -->
+<div class="px-20 pt-16 pb-8 text-center relative z-10">
+<div class="inline-block mb-3">
+<p class="font-heading font-bold text-accent text-sm tracking-[0.2em] uppercase border-b-2 border-accent pb-1">Processo Semplificato</p>
+</div>
+<h1 class="font-heading font-extrabold text-5xl text-primary mb-4">Come Funziona</h1>
+<p class="text-xl text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
+                Abbiamo ridotto la burocrazia a <span class="font-bold text-primary">3 semplici passaggi</span>. 
+                Dal caricamento alla spedizione in pochi minuti.
+            </p>
+</div>
+<!-- Main Content Section -->
+<div class="flex-1 px-16 pb-12 flex items-center justify-center relative">
+<!-- Connecting Line Background -->
+<div class="connector-line transform -translate-y-12"></div>
+<div class="grid grid-cols-3 gap-10 w-full max-w-6xl z-10">
+<!-- Card 1 -->
+<div class="process-card bg-white rounded-2xl shadow-lg border-t-8 border-primary p-8 h-[420px] flex flex-col items-center text-center">
+<div class="number-bg text-gray-100">1</div>
+<div class="relative z-10 w-full flex flex-col items-center h-full">
+<div class="w-24 h-24 rounded-full bg-blue-50 flex items-center justify-center text-primary mb-6 icon-circle">
+<i class="fa-solid fa-cloud-arrow-up text-4xl"></i>
+</div>
+<h3 class="font-heading font-bold text-2xl text-primary mb-4">Inserisci i Dati</h3>
+<p class="text-gray-600 leading-relaxed flex-grow">
+                            Compila il form intelligente con le informazioni essenziali della multa: data, importo e articolo violato.
+                        </p>
+<div class="mt-4 pt-4 border-t border-gray-100 w-full">
+<p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Tempo stimato: 2 min</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="process-card bg-primary rounded-2xl shadow-xl p-8 h-[450px] flex flex-col items-center text-center transform -translate-y-4">
+<div class="number-bg text-white opacity-10">2</div>
+<div class="relative z-10 w-full flex flex-col items-center h-full text-white">
+<div class="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-accent mb-6 shadow-inner ring-4 ring-white/5">
+<i class="fa-solid fa-brain text-4xl"></i>
+</div>
+<h3 class="font-heading font-bold text-2xl text-white mb-4">Analisi AI</h3>
+<p class="text-blue-100 leading-relaxed flex-grow">
+                            L'intelligenza artificiale scansiona il database legale e identifica i motivi di ricorso specifici applicabili al tuo caso.
+                        </p>
+<div class="mt-4 pt-4 border-t border-white/20 w-full">
+<p class="text-xs font-bold text-blue-200 uppercase tracking-wider">Tempo stimato: 30 sec</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="process-card bg-white rounded-2xl shadow-lg border-t-8 border-accent p-8 h-[420px] flex flex-col items-center text-center">
+<div class="number-bg text-gray-100">3</div>
+<div class="relative z-10 w-full flex flex-col items-center h-full">
+<div class="w-24 h-24 rounded-full bg-orange-50 flex items-center justify-center text-accent mb-6 icon-circle">
+<i class="fa-solid fa-paper-plane text-4xl"></i>
+</div>
+<h3 class="font-heading font-bold text-2xl text-primary mb-4">Scarica e Invia</h3>
+<p class="text-gray-600 leading-relaxed flex-grow">
+                            Ricevi immediatamente il ricorso completo in formato PDF, perfettamente formattato e pronto da firmare e spedire.
+                        </p>
+<div class="mt-4 pt-4 border-t border-gray-100 w-full">
+<p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Tempo stimato: 1 min</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Decoration -->
+<div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-blue-600 to-accent"></div>
+</div>
+</body>
+</html>

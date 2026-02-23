@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Modello di Prezzo - RicorsoAI</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: #f3f4f6; }
+        .slide-container { width: 1280px; height: 720px; position: relative; overflow: hidden; background-color: #ffffff; display: flex; flex-direction: column; }
+        .font-heading { font-family: 'Montserrat', sans-serif; }
+        .text-primary { color: #1A5276; }
+        .bg-primary { background-color: #1A5276; }
+        .text-accent { color: #E67E22; }
+        .bg-accent { background-color: #E67E22; }
+        .border-primary { border-color: #1A5276; }
+        .border-accent { border-color: #E67E22; }
+        
+        /* Pricing Card Styling */
+        .pricing-card {
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-top: 6px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-free {
+            border-top-color: #E67E22;
+            background-color: #fff;
+        }
+        
+        .card-standard {
+            border-top-color: #1A5276;
+            background-color: #fff;
+        }
+
+        .badge-save {
+            background-color: #E67E22;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #4b5563;
+        }
+        
+        .check-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            color: #10b981; /* Green check */
+        }
+
+        .savings-banner {
+            background-color: #1A5276;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .savings-banner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.05" fill-rule="evenodd"%3E%3Ccircle cx="3" cy="3" r="3"/%3E%3Ccircle cx="13" cy="13" r="3"/%3E%3C/g%3E%3C/svg%3E');
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Header Section -->
+<div class="px-16 pt-10 pb-4 text-center">
+<div class="inline-flex items-center gap-2 mb-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100">
+<i class="fa-solid fa-tags text-primary text-xs"></i>
+<p class="font-heading font-bold text-primary text-xs uppercase tracking-widest">Piani e Tariffe</p>
+</div>
+<h1 class="font-heading font-extrabold text-4xl text-primary mb-2">Modello di Prezzo</h1>
+<p class="text-xl text-gray-500 font-light">Scegli il piano adatto alle tue esigenze, senza costi nascosti.</p>
+</div>
+<!-- Main Pricing Grid -->
+<div class="flex-1 px-12 pb-4 flex items-center justify-center">
+<div class="grid grid-cols-4 gap-6 w-full max-w-6xl h-full max-h-[480px]">
+<!-- Plan 1: Free -->
+<div class="pricing-card card-free rounded-xl shadow-lg p-6 relative">
+<div class="badge-save">Provalo Ora</div>
+<div class="text-center mb-4 pt-2">
+<h3 class="font-heading font-bold text-lg text-gray-800 uppercase tracking-wider">Primo Ricorso</h3>
+<div class="mt-4 mb-2 flex items-baseline justify-center">
+<span class="font-heading font-extrabold text-4xl text-accent">GRATIS</span>
+</div>
+<p class="text-xs text-gray-400">Una tantum</p>
+</div>
+<div class="bg-orange-50 rounded-lg p-3 mb-4 text-center">
+<p class="text-xs font-bold text-accent uppercase mb-1">Ideale per:</p>
+<p class="text-sm text-gray-700 font-medium">Provare il servizio</p>
+</div>
+<ul class="check-list flex-1 overflow-y-auto">
+<li>Analisi AI vizi di forma</li>
+<li>Generazione PDF immediata</li>
+<li>Nessuna carta richiesta</li>
+</ul>
+<div class="mt-4 pt-4 border-t border-gray-100">
+<button class="w-full py-2 bg-accent text-white rounded-lg font-bold hover:bg-orange-600 transition-colors text-sm">Inizia Gratis</button>
+</div>
+</div>
+<!-- Plan 2: Single -->
+<div class="pricing-card card-standard rounded-xl shadow-lg p-6">
+<div class="text-center mb-4 pt-2">
+<h3 class="font-heading font-bold text-lg text-gray-800 uppercase tracking-wider">Singolo</h3>
+<div class="mt-4 mb-2 flex items-baseline justify-center text-primary">
+<span class="text-2xl font-semibold align-top">€</span>
+<span class="font-heading font-extrabold text-5xl">9,90</span>
+</div>
+<p class="text-xs text-gray-400">Per ricorso</p>
+</div>
+<div class="bg-blue-50 rounded-lg p-3 mb-4 text-center">
+<p class="text-xs font-bold text-primary uppercase mb-1">Ideale per:</p>
+<p class="text-sm text-gray-700 font-medium">Una multa occasionale</p>
+</div>
+<ul class="check-list flex-1 overflow-y-auto">
+<li>Analisi legale completa</li>
+<li>Supporto via email</li>
+<li>Accesso storico pratiche</li>
+</ul>
+<div class="mt-4 pt-4 border-t border-gray-100">
+<button class="w-full py-2 bg-white border-2 border-primary text-primary rounded-lg font-bold hover:bg-blue-50 transition-colors text-sm">Seleziona</button>
+</div>
+</div>
+<!-- Plan 3: Pack 5 -->
+<div class="pricing-card card-standard rounded-xl shadow-lg p-6 relative">
+<div class="absolute top-0 right-0 bg-blue-100 text-primary text-[10px] font-bold px-2 py-1 rounded-bl-lg">POPULAR</div>
+<div class="text-center mb-4 pt-2">
+<h3 class="font-heading font-bold text-lg text-gray-800 uppercase tracking-wider">Pack 5</h3>
+<div class="mt-4 mb-2 flex items-baseline justify-center text-primary">
+<span class="text-2xl font-semibold align-top">€</span>
+<span class="font-heading font-extrabold text-5xl">39,90</span>
+</div>
+<p class="text-xs text-gray-400">€7,98 per ricorso</p>
+</div>
+<div class="bg-blue-50 rounded-lg p-3 mb-4 text-center">
+<p class="text-xs font-bold text-primary uppercase mb-1">Ideale per:</p>
+<p class="text-sm text-gray-700 font-medium">Famiglie, piccole flotte</p>
+</div>
+<ul class="check-list flex-1 overflow-y-auto">
+<li>Validità 12 mesi</li>
+<li>Multi-account</li>
+<li>Assistenza prioritaria</li>
+</ul>
+<div class="mt-4 pt-4 border-t border-gray-100">
+<button class="w-full py-2 bg-primary text-white rounded-lg font-bold hover:bg-blue-800 transition-colors text-sm">Risparmia 20%</button>
+</div>
+</div>
+<!-- Plan 4: Pack 10 -->
+<div class="pricing-card card-standard rounded-xl shadow-lg p-6">
+<div class="text-center mb-4 pt-2">
+<h3 class="font-heading font-bold text-lg text-gray-800 uppercase tracking-wider">Pack 10</h3>
+<div class="mt-4 mb-2 flex items-baseline justify-center text-primary">
+<span class="text-2xl font-semibold align-top">€</span>
+<span class="font-heading font-extrabold text-5xl">69,90</span>
+</div>
+<p class="text-xs text-gray-400">€6,99 per ricorso</p>
+</div>
+<div class="bg-blue-50 rounded-lg p-3 mb-4 text-center">
+<p class="text-xs font-bold text-primary uppercase mb-1">Ideale per:</p>
+<p class="text-sm text-gray-700 font-medium">Professionisti, aziende</p>
+</div>
+<ul class="check-list flex-1 overflow-y-auto">
+<li>Validità 24 mesi</li>
+<li>Dashboard aziendale</li>
+<li>Reportistica avanzata</li>
+</ul>
+<div class="mt-4 pt-4 border-t border-gray-100">
+<button class="w-full py-2 bg-white border-2 border-primary text-primary rounded-lg font-bold hover:bg-blue-50 transition-colors text-sm">Contatta Business</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Savings Banner -->
+<div class="mx-16 mb-8 rounded-xl savings-banner shadow-lg flex items-center justify-between px-8 py-4 z-10">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+<i class="fa-solid fa-piggy-bank text-white text-xl"></i>
+</div>
+<div>
+<p class="font-heading font-bold text-xl text-white">Risparmio vs Avvocato</p>
+<p class="text-blue-200 text-sm">Costo medio avvocato: €200 - €500 per pratica</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<p class="text-blue-200 font-medium">Fino al</p>
+<p class="font-heading font-black text-4xl text-accent">95%</p>
+</div>
+</div>
+<!-- Background Decor -->
+<div class="absolute bottom-0 left-0 w-full h-1 bg-accent"></div>
+</div>
+</body>
+</html>

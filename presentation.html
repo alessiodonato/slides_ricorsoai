@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RicorsoAI – Pitch Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #1A5276;
+    --accent:  #E67E22;
+    --bg:      #0d1117;
+    --slide-w: 1280px;
+    --slide-h: 720px;
+  }
+
+  body {
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* ── Stage ─────────────────────────────────────────── */
+  #stage {
+    position: relative;
+    width: var(--slide-w);
+    height: var(--slide-h);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 40px 100px rgba(0,0,0,.8);
+  }
+
+  .slide-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+    /* start state: ready to enter from right */
+    transform: translateX(100%) scale(.96);
+    opacity: 0;
+    transition:
+      transform .55s cubic-bezier(.77,0,.18,1),
+      opacity   .45s ease;
+    pointer-events: none;
+  }
+
+  .slide-frame.active {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  .slide-frame.exiting-left {
+    transform: translateX(-100%) scale(.96);
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .slide-frame.exiting-right {
+    transform: translateX(100%) scale(.96);
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .slide-frame.entering-from-left {
+    transform: translateX(-100%) scale(.96);
+    opacity: 0;
+  }
+
+  /* ── Controls ───────────────────────────────────────── */
+  #controls {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-top: 28px;
+  }
+
+  .btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.15);
+    background: rgba(255,255,255,.07);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s, border-color .2s, transform .15s;
+    backdrop-filter: blur(6px);
+  }
+
+  .btn:hover {
+    background: rgba(255,255,255,.18);
+    border-color: rgba(255,255,255,.4);
+    transform: scale(1.1);
+  }
+
+  .btn:active { transform: scale(.95); }
+
+  .btn:disabled {
+    opacity: .25;
+    cursor: default;
+    transform: none;
+  }
+
+  #counter {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,.55);
+    letter-spacing: .1em;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  #counter span { color: #fff; }
+
+  /* ── Dots ───────────────────────────────────────────── */
+  #dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    cursor: pointer;
+    transition: background .25s, transform .25s;
+  }
+
+  .dot.active {
+    background: var(--accent);
+    transform: scale(1.4);
+  }
+
+  /* ── Progress bar ───────────────────────────────────── */
+  #progress-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(0,0,0,.3);
+    z-index: 10;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+  }
+
+  #progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width .45s cubic-bezier(.77,0,.18,1);
+  }
+
+  /* ── Keyboard hint ──────────────────────────────────── */
+  #hint {
+    margin-top: 14px;
+    font-size: 11px;
+    color: rgba(255,255,255,.2);
+    letter-spacing: .08em;
+  }
+
+  /* ── Scale wrapper for smaller screens ─────────────── */
+  #scaler {
+    transform-origin: top center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+
+<div id="scaler">
+  <div id="stage">
+    <!-- iframes injected by JS -->
+    <div id="progress-wrap"><div id="progress-bar"></div></div>
+  </div>
+
+  <div id="controls">
+    <button class="btn" id="prevBtn" title="Slide precedente (←)">&#8592;</button>
+    <div id="counter"><span id="cur">1</span> / <span id="tot">10</span></div>
+    <button class="btn" id="nextBtn" title="Slide successiva (→)">&#8594;</button>
+  </div>
+
+  <div id="dots"></div>
+  <p id="hint">usa ← → o click per navigare</p>
+</div>
+
+<script>
+  const TOTAL = 10;
+  let current = 0;
+  let animating = false;
+
+  const stage    = document.getElementById('stage');
+  const prevBtn  = document.getElementById('prevBtn');
+  const nextBtn  = document.getElementById('nextBtn');
+  const curEl    = document.getElementById('cur');
+  const dotsEl   = document.getElementById('dots');
+  const bar      = document.getElementById('progress-bar');
+
+  // ── Build iframes ────────────────────────────────────
+  const frames = [];
+  for (let i = 1; i <= TOTAL; i++) {
+    const iframe = document.createElement('iframe');
+    iframe.src   = `${i}.html`;
+    iframe.className = 'slide-frame';
+    iframe.setAttribute('loading', 'eager');
+    stage.appendChild(iframe);
+    frames.push(iframe);
+  }
+
+  // ── Build dots ───────────────────────────────────────
+  const dots = [];
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot';
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+    dots.push(d);
+  }
+
+  // ── Init first slide ─────────────────────────────────
+  frames[0].classList.add('active');
+  updateUI();
+
+  // ── Navigation ───────────────────────────────────────
+  function goTo(next, direction) {
+    if (animating || next === current) return;
+    if (next < 0 || next >= TOTAL) return;
+    animating = true;
+
+    const dir = direction ?? (next > current ? 'forward' : 'back');
+    const outClass = dir === 'forward' ? 'exiting-left'      : 'exiting-right';
+    const inPrep   = dir === 'forward' ? ''                   : 'entering-from-left';
+    const prev     = current;
+    current        = next;
+
+    const outFrame = frames[prev];
+    const inFrame  = frames[next];
+
+    // prepare incoming frame just off-screen
+    if (inPrep) inFrame.classList.add(inPrep);
+
+    // force reflow so the pre-position is painted
+    void inFrame.offsetWidth;
+
+    // exit current
+    outFrame.classList.remove('active');
+    outFrame.classList.add(outClass);
+
+    // remove prep class (trigger transition to active)
+    if (inPrep) inFrame.classList.remove(inPrep);
+    inFrame.classList.add('active');
+
+    updateUI();
+
+    // cleanup after transition
+    setTimeout(() => {
+      outFrame.classList.remove(outClass);
+      animating = false;
+    }, 600);
+  }
+
+  function updateUI() {
+    curEl.textContent  = current + 1;
+    prevBtn.disabled   = current === 0;
+    nextBtn.disabled   = current === TOTAL - 1;
+    bar.style.width    = `${((current + 1) / TOTAL) * 100}%`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1, 'back'));
+  nextBtn.addEventListener('click', () => goTo(current + 1, 'forward'));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  goTo(current + 1, 'forward');
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    goTo(current - 1, 'back');
+  });
+
+  // ── Touch / swipe support ────────────────────────────
+  let touchStartX = null;
+  stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend',   e => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) dx < 0 ? goTo(current + 1, 'forward') : goTo(current - 1, 'back');
+    touchStartX = null;
+  }, { passive: true });
+
+  // ── Responsive scaling ───────────────────────────────
+  function scaleToFit() {
+    const scaler = document.getElementById('scaler');
+    const sw = window.innerWidth  * 0.97;
+    const sh = window.innerHeight * 0.82;
+    const s  = Math.min(sw / 1280, sh / 720, 1);
+    scaler.style.transform = `scale(${s})`;
+  }
+  scaleToFit();
+  window.addEventListener('resize', scaleToFit);
+</script>
+</body>
+</html>

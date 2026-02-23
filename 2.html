@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Il Problema - RicorsoAI</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: #f3f4f6; }
+        .slide-container { width: 1280px; height: 720px; position: relative; overflow: hidden; background-color: #ffffff; display: flex; flex-direction: column; }
+        .font-heading { font-family: 'Montserrat', sans-serif; }
+        .text-primary { color: #1A5276; }
+        .bg-primary { background-color: #1A5276; }
+        .text-accent { color: #E67E22; }
+        .bg-accent { background-color: #E67E22; }
+        .border-primary { border-color: #1A5276; }
+        
+        /* Custom list styling */
+        .problem-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card {
+            box-shadow: 0 10px 30px -5px rgba(26, 82, 118, 0.1);
+        }
+
+        .result-box {
+            background-color: #FFF3E0; /* Light orange tint */
+            border-left: 8px solid #E67E22;
+        }
+    </style>
+</head>
+<body style="">
+<div class="slide-container">
+<!-- Header -->
+<div class="px-16 pt-12 pb-6 flex items-center justify-between">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<div class="w-8 h-1 bg-accent rounded-full"></div>
+<p class="font-heading font-bold text-sm tracking-widest text-gray-400 uppercase">Lo Scenario Attuale</p>
+</div>
+<h1 class="font-heading font-extrabold text-5xl text-primary">Il Problema</h1>
+</div>
+<!-- Small Logo Top Right -->
+<div class="opacity-50">
+<i class="fa-solid fa-scale-balanced text-3xl text-primary"></i>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="flex-1 px-16 pb-12 flex gap-12">
+<!-- Left Column: Big Stat -->
+<div class="w-5/12 flex flex-col justify-center">
+<div class="stat-card bg-white border border-gray-100 rounded-3xl p-10 text-center relative overflow-hidden h-full flex flex-col justify-center items-center">
+<div class="absolute top-0 left-0 w-full h-3 bg-primary"></div>
+<div class="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center mb-8">
+<i class="fa-solid fa-file-invoice-dollar text-5xl text-primary"></i>
+</div>
+<p class="font-heading font-bold text-gray-500 text-lg mb-2">Ogni anno in Italia</p>
+<h2 class="font-heading font-black text-8xl text-primary leading-none mb-2">40</h2>
+<h3 class="font-heading font-bold text-3xl text-primary mb-8">Milioni di Multe</h3>
+<p class="text-gray-500 px-4 leading-relaxed text-lg">
+                        Una mole impressionante di sanzioni che colpisce milioni di cittadini, spesso ingiustamente.
+                    </p>
+</div>
+</div>
+<!-- Right Column: Pain Points -->
+<div class="w-7/12 flex flex-col justify-between py-2">
+<div class="flex-1 flex flex-col justify-center pr-8">
+<!-- Item 1 -->
+<div class="problem-item flex items-start gap-5">
+<div class="w-12 h-12 rounded-xl bg-red-50 flex-shrink-0 flex items-center justify-center text-red-500 mt-1">
+<i class="fa-solid fa-triangle-exclamation text-xl"></i>
+</div>
+<div>
+<h4 class="font-heading font-bold text-xl text-gray-800 mb-1">Errori Frequenti</h4>
+<p class="text-gray-600 text-lg">Il <strong class="text-primary">30%</strong> delle multe contiene errori o vizi di forma contestabili.</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="problem-item flex items-start gap-5 mt-4">
+<div class="w-12 h-12 rounded-xl bg-orange-50 flex-shrink-0 flex items-center justify-center text-accent mt-1">
+<i class="fa-solid fa-gavel text-xl"></i>
+</div>
+<div>
+<h4 class="font-heading font-bold text-xl text-gray-800 mb-1">Processo Complesso</h4>
+<p class="text-gray-600 text-lg">Fare ricorso è burocraticamente complicato, lento e stressante per il cittadino.</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="problem-item flex items-start gap-5 mt-4">
+<div class="w-12 h-12 rounded-xl bg-blue-50 flex-shrink-0 flex items-center justify-center text-primary mt-1">
+<i class="fa-solid fa-wallet text-xl"></i>
+</div>
+<div>
+<h4 class="font-heading font-bold text-xl text-gray-800 mb-1">Costi Proibitivi</h4>
+<p class="text-gray-600 text-lg">Gli avvocati chiedono <strong class="text-primary">200-500€</strong> per un singolo ricorso.</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="problem-item flex items-start gap-5 mt-4">
+<div class="w-12 h-12 rounded-xl bg-gray-100 flex-shrink-0 flex items-center justify-center text-gray-600 mt-1">
+<i class="fa-solid fa-user-xmark text-xl"></i>
+</div>
+<div>
+<h4 class="font-heading font-bold text-xl text-gray-800 mb-1">Rinuncia ai Diritti</h4>
+<p class="text-gray-600 text-lg">La maggior parte dei cittadini paga senza contestare per evitare problemi.</p>
+</div>
+</div>
+</div>
+<!-- Result Box -->
+<div class="result-box mt-6 p-6 rounded-r-xl shadow-sm mr-8">
+<div class="flex items-center gap-5">
+<i class="fa-solid fa-arrow-right-long text-3xl text-accent"></i>
+<div>
+<p class="font-heading font-bold text-primary text-sm uppercase tracking-wide mb-1 opacity-80">Il Risultato?</p>
+<p class="text-2xl text-gray-800 font-light leading-tight">Milioni di euro pagati <span class="font-bold text-red-500 border-b-2 border-red-200">ingiustamente</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative background element -->
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-gray-50 rounded-tl-full -z-10" style="transform: translate(116.254px, 204.607px);"></div>
+</div>
+
+</body></html>

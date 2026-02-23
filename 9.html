@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Perché Ora - RicorsoAI</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: #f3f4f6; }
+        .slide-container { width: 1280px; height: 720px; position: relative; overflow: hidden; background-color: #ffffff; display: flex; flex-direction: column; }
+        .font-heading { font-family: 'Montserrat', sans-serif; }
+        .text-primary { color: #1A5276; }
+        .bg-primary { background-color: #1A5276; }
+        .text-accent { color: #E67E22; }
+        .bg-accent { background-color: #E67E22; }
+        .border-primary { border-color: #1A5276; }
+        .border-accent { border-color: #E67E22; }
+        
+        /* Card Styling */
+        .market-card {
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent;
+        }
+        
+        .market-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(26, 82, 118, 0.1);
+        }
+
+        .card-blue { border-left-color: #1A5276; }
+        .card-orange { border-left-color: #E67E22; }
+
+        .icon-circle {
+            transition: transform 0.3s ease;
+        }
+        
+        .market-card:hover .icon-circle {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Background Pattern */
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-image: radial-gradient(#1A5276 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.03;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Pattern -->
+<div class="bg-pattern"></div>
+<!-- Header Section -->
+<div class="px-16 pt-12 pb-6 relative z-10">
+<div class="flex items-center gap-4 mb-2">
+<div class="h-1 w-12 bg-accent rounded-full"></div>
+<p class="font-heading font-bold text-accent text-sm uppercase tracking-widest">Market Timing</p>
+</div>
+<h1 class="font-heading font-extrabold text-5xl text-primary mb-2">Perché Ora?</h1>
+<p class="text-xl text-gray-500 font-light">Il momento perfetto per rivoluzionare il settore legale.</p>
+</div>
+<!-- Main Content: 2x2 Grid -->
+<div class="flex-1 px-16 pb-8 flex flex-col justify-center relative z-10">
+<div class="grid grid-cols-2 gap-x-12 gap-y-8 w-full max-w-6xl mx-auto">
+<!-- Card 1: Digitalizzazione PA -->
+<div class="market-card card-blue bg-white rounded-xl shadow-sm p-6 flex items-start gap-6 border border-gray-100">
+<div class="icon-circle w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center flex-shrink-0 text-primary">
+<i class="fa-solid fa-server text-3xl"></i>
+</div>
+<div>
+<h3 class="font-heading font-bold text-xl text-primary mb-2">Digitalizzazione PA</h3>
+<p class="text-gray-600 leading-relaxed">
+                            Sempre più multe sono digitali, aumentando paradossalmente gli <span class="font-bold text-primary">errori di sistema</span> automatici contestabili.
+                        </p>
+</div>
+</div>
+<!-- Card 2: AI Mainstream -->
+<div class="market-card card-orange bg-white rounded-xl shadow-sm p-6 flex items-start gap-6 border border-gray-100">
+<div class="icon-circle w-16 h-16 rounded-2xl bg-orange-50 flex items-center justify-center flex-shrink-0 text-accent">
+<i class="fa-solid fa-robot text-3xl"></i>
+</div>
+<div>
+<h3 class="font-heading font-bold text-primary mb-2">AI Mainstream</h3>
+<p class="text-gray-600 leading-relaxed">
+                            I cittadini sono ormai pronti e si fidano di soluzioni intelligenti per risolvere problemi burocratici complessi.
+                        </p>
+</div>
+</div>
+<!-- Card 3: Costi Legali -->
+<div class="market-card card-orange bg-white rounded-xl shadow-sm p-6 flex items-start gap-6 border border-gray-100">
+<div class="icon-circle w-16 h-16 rounded-2xl bg-orange-50 flex items-center justify-center flex-shrink-0 text-accent">
+<i class="fa-solid fa-scale-unbalanced-flip text-3xl"></i>
+</div>
+<div>
+<h3 class="font-heading font-bold text-primary mb-2">Costi Legali in Aumento</h3>
+<p class="text-gray-600 leading-relaxed">
+                            L'accesso alla giustizia tradizionale è proibitivo. È necessario <span class="font-bold text-accent">democratizzare</span> la difesa legale.
+                        </p>
+</div>
+</div>
+<!-- Card 4: Mobile First -->
+<div class="market-card card-blue bg-white rounded-xl shadow-sm p-6 flex items-start gap-6 border border-gray-100">
+<div class="icon-circle w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center flex-shrink-0 text-primary">
+<i class="fa-solid fa-mobile-screen-button text-3xl"></i>
+</div>
+<div>
+<h3 class="font-heading font-bold text-xl text-primary mb-2">Mobile First</h3>
+<p class="text-gray-600 leading-relaxed">
+                            Tutti hanno uno smartphone in tasca: la possibilità di fare ricorso deve essere a portata di un tap.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Statement -->
+<div class="w-full bg-primary py-8 mt-4 relative overflow-hidden">
+<!-- Decorative circle -->
+<div class="absolute -left-10 -top-10 w-32 h-32 rounded-full border-4 border-white opacity-10"></div>
+<div class="container mx-auto px-16 text-center relative z-10">
+<p class="font-heading font-bold text-2xl text-white tracking-wide">
+<i class="fa-solid fa-gavel mr-3 text-accent"></i>
+                    RicorsoAI rende la giustizia <span class="text-accent underline decoration-2 underline-offset-4">accessibile</span> a tutti.
+                </p>
+</div>
+<!-- Decorative circle -->
+<div class="absolute -right-10 -bottom-10 w-32 h-32 rounded-full border-4 border-accent opacity-20"></div>
+</div>
+</div>
+</body>
+</html>
